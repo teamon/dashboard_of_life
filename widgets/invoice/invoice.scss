@@ -20,6 +20,10 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);;
 
   .value {
     color: $value-color;
+
+    small {
+      font-size: 15px;
+    }
   }
 
   .change-rate {

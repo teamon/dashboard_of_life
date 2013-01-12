@@ -1,9 +1,13 @@
 <h1 class="title" data-bind="title"></h1>
 
-<h2 class="value" data-bind="value"></h2>
+<h2 class="value">
+  <small data-bind="prefix"></small>
+  <span data-bind="value"></span>
+  <small data-bind="suffix"></small>
+</h2>
 
 <p class="change-rate">
-  <span data-bind="deadline"></span>
+  <span data-bind="deadline | raw"> </span>
 </p>
 
 <p class="more-info" data-bind="info | raw"></p>
