@@ -13,8 +13,7 @@ class Play < Invoice
   end
 
   def get!
-    login
-    get_data
+    get_data(login)
   end
 
   def login
@@ -27,12 +26,13 @@ class Play < Invoice
     page3 = login_form.submit
     page4 = page3.forms.first.submit
     page5 = page4.forms.first.submit
-    page6 = page5.forms.first.submit
+    page5.forms.first.submit
   end
 
-  def get_data
+  def get_data(page)
+    info = "Saldo: #{"%.2f" % page.root.css(".left tr")[2].css("td span").last.text.gsub(",", ".").to_f}"
     page = @agent.get "https://24.play.pl/Play24/financeInvoicesList.htm?action=financeInvoices"
     _, value, date = page.root.css(".invoice").text.match(/(\d+,\d+).+?(\d+\.\d+\.\d+)$/).to_a
-    show_result(value.gsub(",", ".").to_f, Date.parse(date))
+    show_result(value.gsub(",", ".").to_f, Date.parse(date), info)
   end
 end

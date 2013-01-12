@@ -9,6 +9,9 @@ configure do
   set :play_login, ""
   set :play_password, ""
 
+  set :pgnig_login, ""
+  set :pgnig_password, ""
+
   helpers do
     def protected!
      # Put any authentication code you want in here.
